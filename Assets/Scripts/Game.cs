@@ -30,7 +30,27 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+        if (Input.GetKeyDown(KeyCode.UpArrow)) 
+        {
+            player.transform.Translate(new Vector3(0,0,1));
+        }
 
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            player.transform.Translate(new Vector3(0, 0, -1));
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            player.transform.Translate(new Vector3(-1, 0, 0));
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            player.transform.Translate(new Vector3(1, 0, 0));
+        }
+        
     }
 
     void CreatePlayer()
