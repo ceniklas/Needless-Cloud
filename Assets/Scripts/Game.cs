@@ -24,7 +24,7 @@ public class Game : MonoBehaviour {
         lightGameObject.transform.Rotate(new Vector3(90, 0, 0));
 
 
-        Instantiate(lightGameObject, transform.position, transform.rotation);
+        //Instantiate(lightGameObject, transform.position, transform.rotation);
 
     }
 	
