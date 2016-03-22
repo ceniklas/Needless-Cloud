@@ -15,7 +15,7 @@ public class Maze : MonoBehaviour {
     }
 
     public GameObject wall;
-    public GameObject player;
+    
     public float wallLength = 1.0f;
     public int xSize = 5;
     public int ySize = 5;
@@ -40,18 +40,10 @@ public class Maze : MonoBehaviour {
         CreateWalls();
         CreateCells();
         CreateMaze();
-        CreatePlayer();
+        
 	}
 
-    void CreatePlayer()
-    {
-        player = new GameObject();
-        player.name = "Player";
-        player = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        player.transform.position = new Vector3(0.5f, 0, 0);
-        player.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
-        //player = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-    }
+
 
     void CreateWalls() {
         wallHolder = new GameObject();
