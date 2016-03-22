@@ -27,31 +27,43 @@ public class Game : MonoBehaviour {
         //Instantiate(lightGameObject, transform.position, transform.rotation);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) 
+    // Update is called once per frame
+    void Update()
+    {
+        if (CollisionDetect.Hit == true)
         {
-            player.transform.Translate(new Vector3(0,0,1));
+
+            transform.Translate((CollisionDetect.Wall.x) / 1000, 0, (CollisionDetect.Wall.z) / 1000, Space.World);
+            float y =  Time.smoothDeltaTime * Input.GetAxis("Horizontal");
+            Debug.Log(CollisionDetect.Wall);
+            transform.Rotate(0, y, 0);
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                player.transform.Translate(new Vector3(0, 0, 0.1f));
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                player.transform.Translate(new Vector3(0, 0, -0.1f));
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                player.transform.Translate(new Vector3(-0.1f, 0, 0));
+            }
+
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                player.transform.Translate(new Vector3(0.1f, 0, 0));
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-            player.transform.Translate(new Vector3(0, 0, -1));
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-        {
-            player.transform.Translate(new Vector3(-1, 0, 0));
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            player.transform.Translate(new Vector3(1, 0, 0));
-        }
         
+
     }
 
     void CreatePlayer()
