@@ -19,7 +19,7 @@ public class Maze : MonoBehaviour {
     public float wallLength = 1.0f;
     public int xSize = 5;
     public int ySize = 5;
-    public bool InvokeInsteadofLoop = false;
+    public bool InvokeInsteadofLoop = true;
     private int totalCells = 0;
     private int visitedCells = 0;
     private bool startedBuilding;
@@ -109,7 +109,7 @@ public class Maze : MonoBehaviour {
 
     void CreateMaze() {
 
-        if (InvokeInsteadofLoop)
+        if (false)
         {
             if (visitedCells < totalCells) {
                 if (startedBuilding) {
