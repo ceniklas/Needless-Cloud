@@ -15,6 +15,17 @@ public class Game : MonoBehaviour {
 
         GameObject theMaze = Instantiate(MazeGenerator, transform.position, transform.rotation) as GameObject;
 
+
+        GameObject lightGameObject = new GameObject("The Light");
+        Light lightComp = lightGameObject.AddComponent<Light>();
+        lightComp.type = LightType.Directional;
+        //lightComp.color = Color.blue;
+        lightGameObject.transform.position = new Vector3(0, 5, 0);
+        lightGameObject.transform.Rotate(new Vector3(90, 0, 0));
+
+
+        Instantiate(lightGameObject, transform.position, transform.rotation);
+
     }
 	
 	// Update is called once per frame
