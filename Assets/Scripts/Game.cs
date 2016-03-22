@@ -52,7 +52,7 @@ public class Game : MonoBehaviour {
 
 
         Material m = new Material(Shader.Find("Standard"));
-        m.color = Color.black;
+        //m.color = Color.black;
         //plane.AddComponent<Material>();
         
         
