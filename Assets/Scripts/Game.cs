@@ -6,16 +6,32 @@ public class Game : MonoBehaviour {
 
     public GameObject MainCamera;
     public GameObject MazeGenerator;
+<<<<<<< HEAD
     public GameObject player;
 
     public GameObject enemy;
 
+=======
+
+
+    private GameObject player;
+    private GameObject theCamera;
+    private GameObject miniMap;
+    
+>>>>>>> 1d38df2f05893381bab2f284895618d09cc355af
     // Use this for initialization
     void Start () {
 
-        GameObject theCam = Instantiate(MainCamera, transform.position, transform.rotation) as GameObject;
-        theCam.transform.Translate(new Vector3(0, 20, 0));
-        theCam.transform.Rotate(new Vector3(90, 0, 0));
+        theCamera = Instantiate(MainCamera, transform.position, transform.rotation) as GameObject;
+        theCamera.transform.Translate(new Vector3(0, 3, 0));
+        theCamera.transform.Rotate(new Vector3(90, 0, 0));
+
+        miniMap = Instantiate(MainCamera, transform.position, transform.rotation) as GameObject;
+        miniMap.transform.Translate(new Vector3(0, 20, 0));
+        miniMap.transform.Rotate(new Vector3(90, 0, 0));
+        Destroy(miniMap.GetComponent<AudioListener>());
+        miniMap.GetComponent<Camera>().depth = 1.0f;
+        miniMap.GetComponent<Camera>().rect = new Rect(0.75f, 0.5f, 0.25f, 1);
 
         GameObject theMaze = Instantiate(MazeGenerator, transform.position, transform.rotation) as GameObject;
 
@@ -47,14 +63,23 @@ public class Game : MonoBehaviour {
     {
         GameObject groundPlane = new GameObject();
         groundPlane.name = "Ground";
-        GameObject.CreatePrimitive(PrimitiveType.Plane).transform.SetParent(groundPlane.transform);
+        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        plane.transform.SetParent(groundPlane.transform);
         groundPlane.transform.position = new Vector3(0, -0.5f, 0);
         groundPlane.transform.localScale = new Vector3(5, 5, 5);
+
+
+        Material m = new Material(Shader.Find("Standard"));
+        //m.color = Color.black;
+        //plane.AddComponent<Material>();
+        
+        
     }
 
     // Update is called once per frame
     void Update () {
 
+<<<<<<< HEAD
         /*
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
         {
@@ -94,6 +119,9 @@ public class Game : MonoBehaviour {
         }
         */
         
+=======
+        theCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3.0f, player.transform.position.z);
+>>>>>>> 1d38df2f05893381bab2f284895618d09cc355af
 
     }
 
@@ -107,7 +135,7 @@ public class Game : MonoBehaviour {
 
         player.AddComponent<Rigidbody>();
 
-        PlayerController p;
-        p = player.AddComponent<PlayerController>();
+        PlayerController p = player.AddComponent<PlayerController>();
+        p.speed = 4.0f;
     }
 }
