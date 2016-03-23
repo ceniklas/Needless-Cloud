@@ -26,5 +26,15 @@ public class EnemyController : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (contact.normal.y < 0.2)
+            {
+                
+            }
+        }
+
+    }
 }
