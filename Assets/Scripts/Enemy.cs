@@ -12,6 +12,8 @@ using System;
         enemy = new GameObject();
         enemy.name = "Enemy";
 
+        enemy.AddComponent<Rigidbody>();
+        EnemyController p = enemy.AddComponent<EnemyController>();
 
         GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.SetParent(enemy.transform);
 
