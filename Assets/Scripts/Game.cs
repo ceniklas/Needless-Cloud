@@ -6,19 +6,11 @@ public class Game : MonoBehaviour {
 
     public GameObject MainCamera;
     public GameObject MazeGenerator;
-<<<<<<< HEAD
-    public GameObject player;
-
     public GameObject enemy;
-
-=======
-
-
     private GameObject player;
     private GameObject theCamera;
     private GameObject miniMap;
     
->>>>>>> 1d38df2f05893381bab2f284895618d09cc355af
     // Use this for initialization
     void Start () {
 
@@ -51,12 +43,7 @@ public class Game : MonoBehaviour {
 
     void CreateEnemies()
     {
-        enemy = new GameObject();
-        enemy.name = "Enemy";
-        GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.SetParent(enemy.transform);
-        enemy.GetComponent<Renderer>().material.color = Color.blue;
-        enemy.transform.position = new Vector3(5.5f, 0, 0);
-        enemy.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        new Enemy();
     }
 
     private void CreateGroundPlane()
@@ -78,8 +65,7 @@ public class Game : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-<<<<<<< HEAD
+        
         /*
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
         {
@@ -119,9 +105,8 @@ public class Game : MonoBehaviour {
         }
         */
         
-=======
         theCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3.0f, player.transform.position.z);
->>>>>>> 1d38df2f05893381bab2f284895618d09cc355af
+
 
     }
 
