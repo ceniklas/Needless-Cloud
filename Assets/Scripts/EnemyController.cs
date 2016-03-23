@@ -17,8 +17,8 @@ public class EnemyController : MonoBehaviour
     {
         //float moveHorizontal = Input.GetAxis("Horizontal");
         //float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Random.value;
-        float moveVertical = Random.value;
+        float moveHorizontal = Random.Range(-1,1);
+        float moveVertical = Random.Range(-1, 1);
 
         Debug.Log("X: " + Input.GetAxis("Horizontal") + " Y: " + Input.GetAxis("Vertical"));
 
