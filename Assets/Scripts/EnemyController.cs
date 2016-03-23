@@ -19,11 +19,12 @@ public class EnemyController : MonoBehaviour
         //float moveVertical = Input.GetAxis("Vertical");
         float moveHorizontal = Random.Range(-1,1);
         float moveVertical = Random.Range(-1, 1);
-
-        Debug.Log("X: " + Input.GetAxis("Horizontal") + " Y: " + Input.GetAxis("Vertical"));
+        
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce(movement * speed);
     }
+
+    
 }
