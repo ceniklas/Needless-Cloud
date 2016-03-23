@@ -125,10 +125,14 @@ public class Game : MonoBehaviour {
     {
         player = new GameObject();
         player.name = "Player";
-        GameObject.CreatePrimitive(PrimitiveType.Sphere).transform.SetParent(player.transform);
+        GameObject theSpere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        theSpere.transform.SetParent(player.transform);
         player.transform.position = new Vector3(0.5f, 0, 0);
         player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
+        //theSpere.GetComponent<Collider>()
+        SphereCollider playerCollider = player.AddComponent<SphereCollider>();
+        playerCollider.isTrigger = true;
         player.AddComponent<Rigidbody>();
 
         PlayerController p = player.AddComponent<PlayerController>();

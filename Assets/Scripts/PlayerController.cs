@@ -22,18 +22,23 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
-    
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter(Collision collision)
     {
-        Rigidbody body = hit.collider.attachedRigidbody;
-        if (body == null || body.isKinematic)
-            return;
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if(contact.normal.y < 0.2)
+            {
+                collision.transform.Translate(-contact.normal);
+            }
+        }
 
-        if (hit.moveDirection.y < -0.3F)
-            return;
+    }
 
-        Vector3 pushDir = new Vector3(hit.moveDirection.z, 0, hit.moveDirection.z);
-        body.velocity = pushDir * 2.0f;
+    void OnTriggerEnter(Collider target)
+    {
+        //Vector3 forceVec = target.attachedRigidbody.velocity.normalized * 20.0f;
+        //target.attachedRigidbody.AddForce(forceVec, ForceMode.Acceleration);
+        
     }
 }
