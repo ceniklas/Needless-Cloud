@@ -44,8 +44,17 @@ public class Game : MonoBehaviour {
     void CreateEnemies()
     {
         Enemy enemy1 = new Enemy();
-        enemy1.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 -0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
-       
+        enemy1.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 - 0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
+
+        Enemy enemy2 = new Enemy();
+        enemy2.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
+
+        Enemy enemy3 = new Enemy();
+        enemy3.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
+
+        Enemy enemy4 = new Enemy();
+        enemy4.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 - 0.5f, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
+
     }
 
     private void CreateGroundPlane()
