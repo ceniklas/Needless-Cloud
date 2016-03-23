@@ -6,7 +6,7 @@ public class Game : MonoBehaviour {
 
     public GameObject MainCamera;
     public GameObject MazeGenerator;
-    public GameObject enemy;
+    //public GameObject enemy;
     private GameObject player;
     private GameObject theCamera;
     private GameObject miniMap;
@@ -43,7 +43,9 @@ public class Game : MonoBehaviour {
 
     void CreateEnemies()
     {
-        new Enemy();
+        Enemy enemy1 = new Enemy();
+        enemy1.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 -0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
+       
     }
 
     private void CreateGroundPlane()

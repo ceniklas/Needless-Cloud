@@ -19,7 +19,12 @@ using System;
         Material runtimeMaterial = new Material(Shader.Find("Standard"));
         runtimeMaterial.color = new Color(1.0f, 0, 0);
         enemy.GetComponent<Renderer>().material = runtimeMaterial;
-        enemy.transform.position = new Vector3(1.5f, 0, 0);
+        //enemy.transform.position = new Vector3(1.5f, 0, 0);
         enemy.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-    }
+        }
+
+        public void setEnemyLocation(float x, float y)
+        {
+            enemy.transform.position = new Vector3(x, 0, y);
+        }
     }
