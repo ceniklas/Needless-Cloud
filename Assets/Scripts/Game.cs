@@ -6,10 +6,12 @@ public class Game : MonoBehaviour {
 
     public GameObject MainCamera;
     public GameObject MazeGenerator;
+    public GameObject AStar;
     //public GameObject enemy;
     private GameObject player;
     private GameObject theCamera;
     private GameObject miniMap;
+    private GameObject aStar;
     
     // Use this for initialization
     void Start () {
@@ -34,9 +36,15 @@ public class Game : MonoBehaviour {
         lightGameObject.transform.position = new Vector3(0, 5, 0);
         lightGameObject.transform.Rotate(new Vector3(90, 0, 0));
 
+        /*aStar.transform.Translate(new Vector3(0, 0, 0));
+        aStar.transform.Rotate(new Vector3(90, 0, 0));*/
+        aStar = new GameObject("A*");
+
         CreatePlayer();
         CreateGroundPlane();
         CreateEnemies();
+        
+
         //Instantiate(lightGameObject, transform.position, transform.rotation);
 
     }
