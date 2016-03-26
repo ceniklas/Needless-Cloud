@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class Grid : MonoBehaviour {
 
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize; //Hämta från Maze?
@@ -17,6 +17,12 @@ public class NewBehaviourScript : MonoBehaviour {
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
+    }
+
+    public void setGridSize(int x, int y)
+    {
+        gridSizeX = x;
+        gridSizeY = y;
     }
 
     void CreateGrid()

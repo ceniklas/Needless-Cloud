@@ -39,6 +39,7 @@ public class Game : MonoBehaviour {
         /*aStar.transform.Translate(new Vector3(0, 0, 0));
         aStar.transform.Rotate(new Vector3(90, 0, 0));*/
         aStar = new GameObject("A*");
+        Grid grid = aStar.AddComponent<Grid>();
 
         CreatePlayer();
         CreateGroundPlane();
