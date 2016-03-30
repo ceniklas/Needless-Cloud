@@ -27,6 +27,7 @@ class Enemy : MonoBehaviour
         rend = enemy.GetComponent<Renderer>();
         rend.material.color = altColor;
         enemy.GetComponent<Renderer>().material.color = new Color(1, 0, 1, 0);
+        
     }
 
     public void setEnemyLocation(float x, float y)

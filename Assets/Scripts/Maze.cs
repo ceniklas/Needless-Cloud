@@ -37,9 +37,11 @@ public class Maze : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        wall.layer = LayerMask.NameToLayer("unwalkablemask");
         CreateWalls();
         CreateCells();
         CreateMaze();
+        
         
 	}
 
@@ -72,6 +74,7 @@ public class Maze : MonoBehaviour {
                 tempWall.transform.parent = wallHolder.transform;
             }
         }
+
     }
 
     void CreateCells() {
@@ -86,7 +89,10 @@ public class Maze : MonoBehaviour {
 
         for (int i = 0; i < children; i++) {
             allWalls[i] = wallHolder.transform.GetChild(i).gameObject;
+            //allWalls[i].layer = LayerMask.NameToLayer("unwalkablemask");
         }
+
+        
 
         for (int cellprocess = 0; cellprocess < cells.Length; cellprocess++) {
             if (termCount == xSize) {

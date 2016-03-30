@@ -23,6 +23,12 @@ public class Grid : MonoBehaviour {
     {
         gridSizeX = x;
         gridSizeY = y;
+        gridWorldSize = new Vector2(x, y);
+    }
+
+    public void setNodeRadius(float radius)
+    {
+        nodeRadius = radius;
     }
 
     void CreateGrid()
@@ -56,7 +62,7 @@ public class Grid : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-
+        //print("HEJ");
         if (grid != null)
         {
             foreach (Node n in grid)

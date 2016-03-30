@@ -40,11 +40,12 @@ public class Game : MonoBehaviour {
         aStar.transform.Rotate(new Vector3(90, 0, 0));*/
         aStar = new GameObject("A*");
         Grid grid = aStar.AddComponent<Grid>();
+        grid.setGridSize(MazeGenerator.GetComponent<Maze>().xSize, MazeGenerator.GetComponent<Maze>().ySize);
+        grid.setNodeRadius(.5f);
 
         CreatePlayer();
         CreateGroundPlane();
         CreateEnemies();
-        
 
         //Instantiate(lightGameObject, transform.position, transform.rotation);
 
