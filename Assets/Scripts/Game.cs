@@ -45,7 +45,7 @@ public class Game : MonoBehaviour {
         pathFinder = aStar.AddComponent<PathFinder>(); //
         grid = aStar.AddComponent<Grid>();
         grid.setGridSize(MazeGenerator.GetComponent<Maze>().xSize, MazeGenerator.GetComponent<Maze>().ySize);
-        grid.setNodeRadius(.1f);
+        grid.setNodeRadius(.2f);
         
 
         CreatePlayer();
