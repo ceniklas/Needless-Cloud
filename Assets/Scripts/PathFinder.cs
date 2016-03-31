@@ -5,12 +5,18 @@ using System.Collections.Generic;
 public class PathFinder : MonoBehaviour
 {
     Grid grid;
+    private Transform seeker, target;
 
     void Awake()
     {
         grid = GetComponent<Grid>();
+        seeker.position = 
     }
 
+    void Update()
+    {
+        FindPath(seeker.position, target.position);
+    }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
     {
