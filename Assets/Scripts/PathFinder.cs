@@ -9,12 +9,21 @@ public class PathFinder : MonoBehaviour
 
     void Awake()
     {
-        grid = GetComponent<Grid>();
-        seeker.position = 
+        grid = gameObject.GetComponent<Grid>();
+    }
+    
+    void Start()
+    {
+        
     }
 
     void Update()
     {
+        target = GameObject.Find("Enemy").transform;
+        seeker = GameObject.Find("Player").transform;
+
+        Debug.Log("S: " + seeker.position.ToString() + " T: " + target.position.ToString());
+
         FindPath(seeker.position, target.position);
     }
 
