@@ -7,11 +7,11 @@ public class Grid : MonoBehaviour
 
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize; //Hämta från Maze?
-    public float nodeRadius; //Bredden på väggen?
+    public float nodeRadius = 0.1f; //Bredden på väggen?
     Node[,] grid;
     Node enemyNode;
 
-    float nodeDiameter;
+    float nodeDiameter = 0.1f;
     int gridSizeX, gridSizeY;
 
     void Start()
@@ -48,7 +48,7 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius - 0.5f);
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
 
-                grid[x, y] = new Node(walkable, worldPoint);
+                grid[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
     }
@@ -94,24 +94,24 @@ public class Grid : MonoBehaviour
         return neighbours;
     }
 
-    public List<Node> path;
+    public List<Node> path = new List<Node>();
 
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
         if (grid != null)
         {
-
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                if (path != null)
+                if (path.Count != 0)
                     if (path.Contains(n))
                         Gizmos.color = Color.black;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - 0.1f));
             }
         }
     }
+
     void Update()
     {
 

@@ -6,7 +6,7 @@ public class PathFinder : MonoBehaviour
 {
     Grid grid;
     private Transform seeker, target;
-
+    bool runOnce = true;
     void Awake()
     {
         
@@ -22,8 +22,8 @@ public class PathFinder : MonoBehaviour
         target = GameObject.Find("Player").transform;
         seeker = GameObject.Find("Enemy").transform;
 
-        Debug.Log("S: " + seeker.position.ToString() + " T: " + target.position.ToString());
-
+        //Debug.Log("S: " + seeker.position.ToString() + " T: " + target.position.ToString());
+        
         FindPath(seeker.position, target.position);
     }
 
@@ -36,31 +36,32 @@ public class PathFinder : MonoBehaviour
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
 
-        Debug.Log("OP Count: " + openSet.Count);
+        //Debug.Log("OP Count: " + openSet.Count);
 
         while (openSet.Count > 0)
         {
             Node currentNode = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
-                Debug.Log("Looping openSet");
+                //Debug.Log("Looping openSet");
                 if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
                 {
                     currentNode = openSet[i];
                 }
             }
-            Debug.Log(currentNode.worldPosition.ToString());
+
+            //Debug.Log(currentNode.worldPosition.ToString());
+
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
             if (currentNode == targetNode)
             {
-                Debug.Log("HEYEY");
                 RetracePath(startNode, targetNode);
                 return;
             }
 
-
+            //Debug.Log("NR of neig" + grid.GetNeighbours(currentNode).Count);
 
             foreach (Node neighbour in grid.GetNeighbours(currentNode))
             {
@@ -70,6 +71,7 @@ public class PathFinder : MonoBehaviour
                 }
 
                 int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                
                 if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
                 {
                     neighbour.gCost = newMovementCostToNeighbour;

@@ -23,12 +23,12 @@ public class EnemyController : MonoBehaviour
         //float moveHorizontal = Input.GetAxis("Horizontal");
         //float moveVertical = Input.GetAxis("Vertical");
 
-        movePlayer(movement);
+        //movePlayer(movement);
     }
     
     private void movePlayer(Vector3 direction)
     {
-        rb.AddForce(direction * speed);
+        //rb.AddForce(direction * speed);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        rb.AddForce(movement * speed);
+        //rb.AddForce(movement * speed);
 
     }
 }
