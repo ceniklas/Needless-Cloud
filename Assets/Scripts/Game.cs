@@ -12,7 +12,9 @@ public class Game : MonoBehaviour {
     private GameObject theCamera;
     private GameObject miniMap;
     private GameObject aStar;
-    
+    private Grid grid;
+    private PathFinder pathFinder;
+
     // Use this for initialization
     void Start () {
 
@@ -39,9 +41,12 @@ public class Game : MonoBehaviour {
         /*aStar.transform.Translate(new Vector3(0, 0, 0));
         aStar.transform.Rotate(new Vector3(90, 0, 0));*/
         aStar = new GameObject("A*");
-        Grid grid = aStar.AddComponent<Grid>();
+
+        pathFinder = aStar.AddComponent<PathFinder>(); //
+        grid = aStar.AddComponent<Grid>();
         grid.setGridSize(MazeGenerator.GetComponent<Maze>().xSize, MazeGenerator.GetComponent<Maze>().ySize);
-        grid.setNodeRadius(.2f);
+        grid.setNodeRadius(.1f);
+        
 
         CreatePlayer();
         CreateGroundPlane();
@@ -55,6 +60,7 @@ public class Game : MonoBehaviour {
     {
         Enemy enemy1 = new Enemy();
         enemy1.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 - 0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
+        //grid.setEnemyPosition(enemy1.transform.position);
 
         Enemy enemy2 = new Enemy();
         enemy2.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);

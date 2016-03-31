@@ -4,6 +4,23 @@ using System.Collections.Generic;
 
 public class PathFinder : MonoBehaviour
 {
+    Grid grid;
+
+    public PathFinder(int x, int y)
+    {
+        grid = GetComponent<Grid>();
+        grid.setGridSize(x, y);
+        grid.setNodeRadius(.1f);
+    }
+
+    void Awake()
+    {
+        
+    }
+
+
+
+    /*
     private class State
     {
 
@@ -46,4 +63,5 @@ public class PathFinder : MonoBehaviour
     {
         return new State();
     }
+    */
 }

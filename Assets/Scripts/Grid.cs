@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Grid : MonoBehaviour {
+public class Grid : MonoBehaviour
+{
 
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize; //Hämta från Maze?
     public float nodeRadius; //Bredden på väggen?
     Node[,] grid;
+    Node enemyNode;
 
     float nodeDiameter;
     int gridSizeX, gridSizeY;
@@ -18,7 +20,7 @@ public class Grid : MonoBehaviour {
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
-        
+
     }
 
     public void setGridSize(int x, int y)
@@ -42,7 +44,7 @@ public class Grid : MonoBehaviour {
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius ) + Vector3.forward * (y * nodeDiameter + nodeRadius - 0.5f);
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius - 0.5f);
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
 
                 grid[x, y] = new Node(walkable, worldPoint);
@@ -62,17 +64,28 @@ public class Grid : MonoBehaviour {
         return grid[x, y];
     }
 
+    public void setEnemyPosition(Vector3 pos)
+    {
+        enemyNode = NodeFromWorldPoint(pos);
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        //print("HEJ");
         if (grid != null)
         {
+
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                /*if (enemyNode == n)
+                    Gizmos.color = Color.cyan;*/
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }
+    }
+    void Update()
+    {
+
     }
 }

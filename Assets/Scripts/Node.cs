@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Node : MonoBehaviour {
+public class Node {
 
     public bool walkable;
     public Vector3 worldPosition;

@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        path = new PathFinder();
+        //path = new PathFinder();
         movement = new Vector3(1.0f, 0.0f, 0.0f);
     }
 
