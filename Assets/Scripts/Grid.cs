@@ -105,8 +105,9 @@ public class Grid : MonoBehaviour
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                /*if (enemyNode == n)
-                    Gizmos.color = Color.cyan;*/
+                if (path != null)
+                    if (path.Contains(n))
+                        Gizmos.color = Color.black;
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }

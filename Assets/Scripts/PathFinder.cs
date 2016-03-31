@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PathFinder : MonoBehaviour
 {
     Grid grid;
+    public Transform seeker, target;
 
     void Awake()
     {
