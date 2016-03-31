@@ -37,13 +37,13 @@ public class Maze : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        wall.layer = LayerMask.NameToLayer("unwalkablemask");
+        
         CreateWalls();
         CreateCells();
         CreateMaze();
-        
-        
-	}
+        //wall.layer = LayerMask.NameToLayer("unwalkablemask");
+
+    }
 
 
 
@@ -89,7 +89,7 @@ public class Maze : MonoBehaviour {
 
         for (int i = 0; i < children; i++) {
             allWalls[i] = wallHolder.transform.GetChild(i).gameObject;
-            //allWalls[i].layer = LayerMask.NameToLayer("unwalkablemask");
+            allWalls[i].layer = LayerMask.NameToLayer("unwalkablemask");
         }
 
         
@@ -177,15 +177,19 @@ public class Maze : MonoBehaviour {
         {
             case 1:
                 Destroy(cells[currentCell].north);
+                cells[currentCell].north.layer = LayerMask.NameToLayer("Default");
                 break;
             case 2:
                 Destroy(cells[currentCell].east);
+                cells[currentCell].east.layer = LayerMask.NameToLayer("Default");
                 break;
             case 3:
                 Destroy(cells[currentCell].south);
+                cells[currentCell].south.layer = LayerMask.NameToLayer("Default");
                 break;
             case 4:
                 Destroy(cells[currentCell].west);
+                cells[currentCell].west.layer = LayerMask.NameToLayer("Default");
                 break;
 
             default:

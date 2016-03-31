@@ -41,7 +41,7 @@ public class Game : MonoBehaviour {
         aStar = new GameObject("A*");
         Grid grid = aStar.AddComponent<Grid>();
         grid.setGridSize(MazeGenerator.GetComponent<Maze>().xSize, MazeGenerator.GetComponent<Maze>().ySize);
-        grid.setNodeRadius(.5f);
+        grid.setNodeRadius(.2f);
 
         CreatePlayer();
         CreateGroundPlane();
