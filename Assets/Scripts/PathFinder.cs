@@ -9,18 +9,18 @@ public class PathFinder : MonoBehaviour
 
     void Awake()
     {
-        grid = gameObject.GetComponent<Grid>();
+        
     }
     
     void Start()
     {
-        
+        grid = gameObject.GetComponent<Grid>();
     }
 
     void Update()
     {
-        target = GameObject.Find("Enemy").transform;
-        seeker = GameObject.Find("Player").transform;
+        target = GameObject.Find("Player").transform;
+        seeker = GameObject.Find("Enemy").transform;
 
         Debug.Log("S: " + seeker.position.ToString() + " T: " + target.position.ToString());
 
@@ -36,25 +36,31 @@ public class PathFinder : MonoBehaviour
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
 
+        Debug.Log("OP Count: " + openSet.Count);
+
         while (openSet.Count > 0)
         {
             Node currentNode = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
+                Debug.Log("Looping openSet");
                 if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
                 {
                     currentNode = openSet[i];
                 }
             }
-
+            Debug.Log(currentNode.worldPosition.ToString());
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
             if (currentNode == targetNode)
             {
+                Debug.Log("HEYEY");
                 RetracePath(startNode, targetNode);
                 return;
             }
+
+
 
             foreach (Node neighbour in grid.GetNeighbours(currentNode))
             {
@@ -91,7 +97,7 @@ public class PathFinder : MonoBehaviour
         }
         path.Reverse();
 
-        grid.path = path;
+        grid.path = new List<Node>(path);
 
     }
 

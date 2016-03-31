@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             if(contact.normal.y < 0.2)
             {
-                collision.transform.Translate(-contact.normal);
+                //collision.transform.Translate(-contact.normal);
             }
         }
 
