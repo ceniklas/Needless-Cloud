@@ -124,26 +124,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11469788, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 188792, guid: c570bc508a5121e49a14fca41a96c73b, type: 2}
-    - target: {fileID: 11469788, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
-      propertyPath: PlayerModel
-      value: 
-      objectReference: {fileID: 2100000, guid: bbdf01f80f61b0d4292cee03620b504f, type: 2}
-    - target: {fileID: 11469788, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
-      propertyPath: PlayerMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: bbdf01f80f61b0d4292cee03620b504f, type: 2}
-    - target: {fileID: 11469788, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
-      propertyPath: EnemyMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: e59a4ace5f1ded743a5a61cd3b3c39b4, type: 2}
-    - target: {fileID: 11469788, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
-      propertyPath: GroundMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: a3b10a32b58f2d343918e803750093fd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54a7129dedd24cc4ebbb5f1336d07d39, type: 2}
   m_IsPrefabParent: 0
