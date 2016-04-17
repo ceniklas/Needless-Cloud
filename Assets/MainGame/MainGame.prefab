@@ -41,6 +41,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 114184, guid: f772e363c2c8b77469825d5b31b16206, type: 2}
   MazeGenerator: {fileID: 164874, guid: 49953a7fd0219104688dcb24a732129c, type: 2}
+  AStar: {fileID: 0}
+  PlayerMaterial: {fileID: 2100000, guid: bbdf01f80f61b0d4292cee03620b504f, type: 2}
+  EnemyMaterial: {fileID: 2100000, guid: e59a4ace5f1ded743a5a61cd3b3c39b4, type: 2}
+  GroundMaterial: {fileID: 2100000, guid: a3b10a32b58f2d343918e803750093fd, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

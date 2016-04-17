@@ -7,7 +7,11 @@ public class Game : MonoBehaviour {
     public GameObject MainCamera;
     public GameObject MazeGenerator;
     public GameObject AStar;
-    //public GameObject enemy;
+    public Material PlayerMaterial;
+    public Material EnemyMaterial;
+    public Material GroundMaterial;
+
+    private GameObject enemy;
     private GameObject player;
     private GameObject theCamera;
     private GameObject miniMap;
@@ -65,12 +69,30 @@ public class Game : MonoBehaviour {
         Enemy enemy2 = new Enemy();
         enemy2.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, MazeGenerator.GetComponent<Maze>().ySize / 2 - 1.0f);
         */
-        Enemy enemy3 = new Enemy();
-        enemy3.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
+        //Enemy enemy3 = new Enemy();
+        //enemy3.setEnemyLocation(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
         /*
         Enemy enemy4 = new Enemy();
         enemy4.setEnemyLocation(MazeGenerator.GetComponent<Maze>().xSize / 2 - 0.5f, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
         */
+
+        enemy = new GameObject();
+        enemy.name = "Enemy";
+        GameObject theSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        theSphere.transform.SetParent(enemy.transform);
+        enemy.transform.position = new Vector3(0.5f, 0, 0);
+        enemy.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+        theSphere.GetComponent<MeshRenderer>().material = EnemyMaterial;
+
+
+        //theSpere.GetComponent<Collider>()
+        SphereCollider enemyCollider = enemy.AddComponent<SphereCollider>();
+        enemyCollider.isTrigger = true;
+        enemy.AddComponent<Rigidbody>();
+
+        enemy.transform.position = new Vector3(-MazeGenerator.GetComponent<Maze>().xSize / 2 + 0.5f, 0, -MazeGenerator.GetComponent<Maze>().ySize / 2 );
+
     }
 
     private void CreateGroundPlane()
@@ -82,7 +104,7 @@ public class Game : MonoBehaviour {
         groundPlane.transform.position = new Vector3(0, -0.5f, 0);
         groundPlane.transform.localScale = new Vector3(5, 5, 5);
 
-
+        plane.GetComponent<MeshRenderer>().material = GroundMaterial;
         Material m = new Material(Shader.Find("Standard"));
         //m.color = Color.black;
         //plane.AddComponent<Material>();
@@ -92,59 +114,22 @@ public class Game : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
-        /*
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) 
-        {
-            player.transform.Translate(new Vector3(0,0,0.1f));
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            player.transform.Translate(new Vector3(0, 0, -1));
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-            {
-                player.transform.Translate(new Vector3(0, 0, 0.1f));
-            }
-            
-            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            {
-                player.transform.Translate(new Vector3(0, 0, -0.1f));
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                player.transform.Translate(new Vector3(-0.1f, 0, 0));
-            }
-
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                player.transform.Translate(new Vector3(0.1f, 0, 0));
-            }
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            player.transform.Translate(new Vector3(1, 0, 0));
-        }
-        */
-        
+          
         theCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3.0f, player.transform.position.z);
-
-
+        
     }
 
     void CreatePlayer()
     {
         player = new GameObject();
         player.name = "Player";
-        GameObject theSpere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        theSpere.transform.SetParent(player.transform);
+        GameObject theSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        theSphere.transform.SetParent(player.transform);
         player.transform.position = new Vector3(0.5f, 0, 0);
-        player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        player.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+
+        theSphere.GetComponent<MeshRenderer>().material = PlayerMaterial;
+        
 
         //theSpere.GetComponent<Collider>()
         SphereCollider playerCollider = player.AddComponent<SphereCollider>();

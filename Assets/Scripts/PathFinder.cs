@@ -6,7 +6,7 @@ public class PathFinder : MonoBehaviour
 {
     Grid grid;
     private Transform seeker, target;
-    bool runOnce = true;
+
     void Awake()
     {
         

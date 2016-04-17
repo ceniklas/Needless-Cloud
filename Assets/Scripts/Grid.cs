@@ -17,7 +17,7 @@ public class Grid : MonoBehaviour
     void Start()
     {
         unwalkableMask = LayerMask.GetMask("unwalkablemask");
-        nodeDiameter = nodeRadius * 2;
+        nodeDiameter = nodeRadius * 3.0f;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
