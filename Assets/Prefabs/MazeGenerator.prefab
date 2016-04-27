@@ -41,8 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 196656, guid: 2b2b15074ba4d62428afd3c354e97124, type: 2}
   wallLength: 1
-  xSize: 9
-  ySize: 9
+  xSize: 20
+  ySize: 20
   InvokeInsteadofLoop: 0
 --- !u!1001 &100100000
 Prefab:
